@@ -46,7 +46,7 @@ export default defineComponent({
         SintjanLayout,
     },
     props: [
-
+        'articles',
     ],
     data() {
         return {

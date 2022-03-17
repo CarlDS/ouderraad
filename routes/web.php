@@ -27,13 +27,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-Route::get('/take-away', [TakeawayController::class, 'show']/*function() {
-    return Inertia::render('TakeAway/TakeAway', [
-        'canLogin' => Route::has('login'),///////////////////////render controller
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);*/
+Route::get('/take-away', [TakeawayController::class, 'show']
 )->name('takeaway');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

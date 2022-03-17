@@ -23756,7 +23756,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     SintjanLayout: _Layouts_SintjanLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: [],
+  props: ['articles'],
   data: function data() {
     return {
       form: {

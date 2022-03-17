@@ -12,7 +12,7 @@ class TakeawayController extends Controller
 {
     public function show()
     {
-
+        //dd(Article::all());
         return Inertia::render('TakeAway/TakeAway', [
             'articles' => Article::all(),
             'canLogin' => Route::has('login'),
