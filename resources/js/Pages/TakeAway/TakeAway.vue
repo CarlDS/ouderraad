@@ -29,6 +29,10 @@
                         <div class="flex">
                             <img src="images/menu3.png" class="h-52">
                             <h1 class="text-7xl mx-auto my-auto">Menu</h1>
+                            <div v-for="article in $page.props.articles" :key="article">
+                                test
+                            </div>
+
                         </div>
 
                     </div>
@@ -45,9 +49,7 @@ export default defineComponent({
     components: {
         SintjanLayout,
     },
-    props: [
-        'articles',
-    ],
+
     data() {
         return {
             form: {
