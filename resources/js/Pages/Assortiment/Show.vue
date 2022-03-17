@@ -17,10 +17,7 @@
                     <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                         <h2>Assortiment</h2>
                         <ul>
-                            <li v-for="ass in assortiment">
-                                <div class="md: grid-cols-5">
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

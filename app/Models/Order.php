@@ -10,6 +10,9 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'buyer_id', 'event_id', 'payed_at',
+        'fname', 'lname', 'email', 'contact_name', 'contact_grade', 'payed_at', 'collected_at'
     ];
+    public function orderlines() {
+        return $this->hasMany(Orderline::class);
+    }
 }

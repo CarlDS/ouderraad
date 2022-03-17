@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
             $table->string('description');
-            $table->foreignId('supplier_id')->nullable();
+            $table->string('category');
+            $table->boolean('veggie');
+            $table->unsignedBigInteger('sell_price');
             $table->timestamps();
         });
     }

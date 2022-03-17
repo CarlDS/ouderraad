@@ -10,9 +10,15 @@ module.exports = {
     ],
 
     theme: {
+
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+            'sjgreen': '#c8d936',
+            'sjblue': '#a0dbe4',
+            'sjlblue': '#aae5ee',
             },
         },
     },

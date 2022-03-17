@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('buyer_id');
-            $table->foreignId('event_id');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('email');
+            $table->string('contact_name')->nullable();
+            $table->string('contact_grade')->nullable();
             $table->timestamp('payed_at')->nullable();
+            $table->timestamp('collected_at')->nullable();
             $table->timestamps();
         });
     }

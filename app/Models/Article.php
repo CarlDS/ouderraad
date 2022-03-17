@@ -10,14 +10,6 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'slug', 'description', 'supplier_id',
+        'name', 'description', 'category', 'veggie', 'sell_price',
     ];
-
-    public function supplier(){
-        return $this->belongsTo(Supplier::class);
-    }
-
-    public function assortiment(){
-        return $this->hasMany(Assortiment::class);
-    }
 }
