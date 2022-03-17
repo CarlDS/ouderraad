@@ -29367,7 +29367,7 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_6 = {
-  "class": "w-75 sm:w-50 mx-auto"
+  "class": "w-full sm:w-3/4 mx-auto"
 };
 var _hoisted_7 = {
   "class": "border-2 p-3 mt-5"

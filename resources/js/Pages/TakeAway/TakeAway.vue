@@ -9,7 +9,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-8">
-                <div class=" w-50 mx-auto">
+                <div class="w-50 mx-auto">
                     <img src="images/rups_trans.png" class="d-block mx-auto my-3">
                     <img src="images/italban.png" class="my-3">
 
@@ -26,7 +26,7 @@
 
                     <img src="images/italban.png" class="mb-3">
                 </div>
-                <div class="w-75 sm:w-50 mx-auto">
+                <div class="w-full sm:w-3/4  mx-auto">
                     <div class="border-2 p-3 mt-5">
                         <div class="flex mb-1">
                             <img src="images/menu3.png" class="h-52">
