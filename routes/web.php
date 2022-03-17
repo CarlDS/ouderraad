@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AssortimentController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TakeawayController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,14 +27,14 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-Route::get('/take-away', function() {
+Route::get('/take-away', [TakeawayController::class, 'show']/*function() {
     return Inertia::render('TakeAway/TakeAway', [
-        'canLogin' => Route::has('login'),
+        'canLogin' => Route::has('login'),///////////////////////render controller
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-    ]);
-})->name('takeaway');
+    ]);*/
+)->name('takeaway');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
