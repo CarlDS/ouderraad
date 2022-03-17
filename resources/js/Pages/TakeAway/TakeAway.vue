@@ -9,7 +9,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-8">
-                <div class="w-50 mx-auto">
+                <div class="s:w-50 mx-auto">
                     <img src="images/rups_trans.png" class="d-block mx-auto my-3">
                     <img src="images/italban.png" class="my-3">
 
@@ -29,11 +29,9 @@
                         <div class="flex">
                             <img src="images/menu3.png" class="h-52">
                             <h1 class="text-7xl mx-auto my-auto">Menu</h1>
-                            test
-                            <div v-for="article in $page.props.articles" :key="article">
-                                test
-                            </div>
-
+                        </div>
+                         <div v-for="article in $page.props.articles" :key="article">
+                            {{article.name}} / {{article.description}} / {{article.sell_price}}
                         </div>
 
                     </div>
@@ -50,7 +48,9 @@ export default defineComponent({
     components: {
         SintjanLayout,
     },
-
+    props: [
+        'articles',
+    ],
     data() {
         return {
             form: {
