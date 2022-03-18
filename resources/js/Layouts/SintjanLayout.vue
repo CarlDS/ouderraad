@@ -12,7 +12,7 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route('takeaway')">
                                     <jet-application-mark class="block h-9 w-auto" />
                                 </Link>
                             </div>
@@ -51,7 +51,7 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-responsive-nav-link :href="route('takeaway')" :active="route().current('takeaway')">
                             Take Away
                         </jet-responsive-nav-link>
                     </div>

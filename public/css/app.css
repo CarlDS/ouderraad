@@ -1032,9 +1032,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.bg-sjgreen{
   --tw-bg-opacity: 1;
   background-color: rgb(200 217 54 / var(--tw-bg-opacity));
-}.bg-sjblue{
-  --tw-bg-opacity: 1;
-  background-color: rgb(160 219 228 / var(--tw-bg-opacity));
 }.bg-opacity-25{
   --tw-bg-opacity: 0.25;
 }.bg-cover{

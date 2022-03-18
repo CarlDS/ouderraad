@@ -2,7 +2,7 @@
 <sintjan-layout>
     <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Italiaanse Take Away Sint-Jansschool Italiaanse Take Away Sint-Jansschool
+                29 april 2022: Italiaanse Take Away Sint-Jansschool
             </h2>
     </template>
 
@@ -17,17 +17,11 @@
                     <h1 class="text-center">Take Away</h1>
 
 
-                    <p>Tadaaa ... op 29 april organiseren we onze eerste Italiaans getinte take away.</p>
-                    <p>Knapperige pizza's, smeuïge lasagnes en handige sauzen, keuze genoeg dus! </p>
-                    <p>Bestel vanaf maandag 21 maart via deze website, stuur hem door naar vrienden, familie en collega's.<br>
-                        Met de opbrengst van deze actie sparen we verder voor een toffe boomhut in onze schooltuin.
-                    </p>
-                    <p> Alvast heel erg bedankt in naam van alle kinderen en leerkrachten van Sint-Jan!!</p>
+                    <p class="text-center">De webpagina is beschikbaar vanaf maandag 21 maart.</p>
 
                     <img src="images/italban.png" class="mb-3">
                 </div>
-                <div class="w-3/4 mx-auto bg-sjblue">Wens je een herinneringsmail wanneer de webpagina online is? Vul dan hieronder je emailadres in. Wij houden je dan op de hoogte.</div>
-                <form class="w-3/4 mx-auto bg-sjblue"><label for="emailreminder">Emailadres:</label><input type="text" value="vul hier je emailadres in"></form>
+
 
             </div>
         </div>

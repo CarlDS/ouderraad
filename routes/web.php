@@ -20,8 +20,10 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [TakeawayController::class, 'landing']);
-Route::get('/take-away', [TakeawayController::class, 'show']
+Route::get('/take-away', [TakeawayController::class, 'landing']
 )->name('takeaway');
+Route::get('/TAKE-AWAY', [TakeawayController::class, 'landing']
+)->name('takeaway2');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
