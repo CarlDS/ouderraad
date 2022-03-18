@@ -21,4 +21,16 @@ class TakeawayController extends Controller
             'phpVersion' => PHP_VERSION,
         ]);
     }
+
+    public function landing()
+    {
+        //dd(Article::all());
+        return Inertia::render('TakeAway/TakeAwayLanding', [
+            'articles' => Article::all(),
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
+    }
 }

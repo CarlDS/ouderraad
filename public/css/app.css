@@ -783,6 +783,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.25rem;
 }.block{
   display: block;
+}.inline{
+  display: inline;
 }.flex{
   display: flex;
 }.inline-flex{
@@ -1030,6 +1032,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.bg-sjgreen{
   --tw-bg-opacity: 1;
   background-color: rgb(200 217 54 / var(--tw-bg-opacity));
+}.bg-sjblue{
+  --tw-bg-opacity: 1;
+  background-color: rgb(160 219 228 / var(--tw-bg-opacity));
 }.bg-opacity-25{
   --tw-bg-opacity: 0.25;
 }.bg-cover{
@@ -1483,10 +1488,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 2.5rem;
   }.sm\:w-full{
     width: 100%;
-  }.sm\:w-3\/4{
-    width: 75%;
   }.sm\:w-1\/2{
     width: 50%;
+  }.sm\:w-3\/4{
+    width: 75%;
   }.sm\:max-w-md{
     max-width: 28rem;
   }.sm\:max-w-sm{
