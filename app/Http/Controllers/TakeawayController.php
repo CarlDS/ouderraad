@@ -33,4 +33,15 @@ class TakeawayController extends Controller
             'phpVersion' => PHP_VERSION,
         ]);
     }
+    public function remindermail(Request $request){
+        return $request;
+    }
+    public function store(Request $request){
+        $request->validate([
+            'fname' => ['required'],
+            'lname' => ['required'],
+            'email' => ['required']
+        ]);
+        dd($request);
+    }
 }

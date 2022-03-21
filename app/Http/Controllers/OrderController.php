@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Orderline;
+
+use Illuminate\Foundation\Application as FoundationApplication;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class OrderController extends Controller
 {
@@ -35,7 +39,65 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $request->validate([
+            'fname' => ['required'],
+            'lname' => ['required'],
+            'email' => ['required']
+        ]);
+        $order = Order::create([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'contact_name' => $request->contact_name,
+            'contact_grade' => $request->contact_grade
+        ]);
+        $amount=0;
+        foreach ($request->products as $product){
+            $line = Orderline::create([
+                'article_id' => $product['id'],
+                'quantity' => $product['quant'],
+                'order_id' => $order['id'],
+            ]);
+            $amount += $line->article->sell_price;
+        }
+
+        $reference = $order->id.'-'.$amount.'-'.$order->contact_grade.'-00';
+        $order->reference = $reference;
+        $order->save();
+        $this->mailconfirm($order, $amount, $reference, $request);
+        return Inertia::render('TakeAway/Confirm', [
+            'order' => $request,
+            'amount' => $amount,
+            'reference' => $reference,
+            'laravelVersion' => FoundationApplication::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
+
+    }
+
+    public function mailconfirm($order, $amount, $reference, $request){
+
+        $message = '<h1>Bevestiging van je bestelling</h1><p>Beste '.$order->fname.', </p><p> Wij dank je van harte voor jouw bestelling. Deze bevestiging werd ook verstuurd naar '.$order->email.' Kijk zeker je spam-folder na wanneer je de mail niet onmiddelijk terugvindt. </p><p>Om je reservatie definitief te bevestigen vragen we om een bedrag van <strong> '.$amount.' € </strong> over te schrijven op rekening van de school <strong>BE26 7343 5616 6629</strong>. Als mededeling geef je <strong>'.$reference.'</strong>. Zo kunnen wij jouw bestelling vlot verwerken.</p><p>Je bestelling kan je ophalen op 29 april, tussen 15u en 18u in de lagere school, Mechelsevest 2.<br> Denk eraan om op de dag van afhaling koeltassen mee te brengen!</p><p>Hieronder vind je jouw bestelling nogmaals opgelijst: </p>';
+        $message .= '<table class="w-full">';
+        foreach ($request->products as $product){
+            //dd($product['name']);
+            $message .= '<tr><td>'.$product['name'].'</td><td>'.$product['quant'].'</td><td>'.$product['price'].'</td><td>'.$product['quant']*$product['price'].'</td></tr>';
+        }
+        $message .= '</table>';
+
+        $subject = 'Reservatie Take-Away Sint-Jansschool Leuven';
+        $email = '<html><body>'.$message.'</body></html>';
+        $to = $order->email;
+        $from = 'ouderraad-sintjan@cpmdesmedt.be';
+        $headers   = array();
+	    $headers[] = "MIME-Version: 1.0";
+	    $headers[] = "Content-type: text/html; charset=iso-8859-1";
+	    $headers[] = "From: Ouderraad Sint-Jansschool <{$from}>";
+	    $headers[] = "Cc: Ouderraad Sint-Jansschool <{$from}>";
+	    $headers[] = "Subject: {$subject}";
+	    $headers[] = "X-Mailer: PHP/".phpversion();
+	    mail($to, $subject, $email, implode("\r\n", $headers));
+        dd($to, $subject, $email, implode("\r\n", $headers));
     }
 
     /**
