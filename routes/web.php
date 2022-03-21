@@ -19,15 +19,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', function(){
-   return Inertia::render('TakeAwayTester', [
 
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-        ]);
-});
 Route::post('/order', [OrderController::class, 'store'])->name('order');
 Route::get('/', [TakeawayController::class, 'landing']);
 
