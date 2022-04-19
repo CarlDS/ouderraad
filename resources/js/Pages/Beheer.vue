@@ -184,7 +184,7 @@ export default({
 
     },
     mounted() {
-        this.resItems;
+        setTimeout(this.resItems, 10);
 
     }
 })
