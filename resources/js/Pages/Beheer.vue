@@ -52,7 +52,7 @@ import SintjanLayout from '@/Layouts/SintjanLayout.vue'
 
 export default({
     setup() {
-        this.resItems;
+
     },
     components: {
         SintjanLayout,
@@ -117,6 +117,28 @@ export default({
                     }
                 });
             }); */
+
+            return count;
+        }
+    },
+    methods: {
+        orderTotal(orderId){
+            var total = 0;
+            this.articles.forEach(article => {
+                this.orderlines.forEach(orderline => {
+                    if(orderline.order_id == orderId && orderline.article_id == article.id){
+                        total += orderline.quantity*article.sell_price;
+                    }
+                });
+            });
+            return total;
+        },
+
+        setPayed(orderId, action){
+            this.$inertia.post('/payed', {'orderId':orderId, 'action':action}, {onSucces: this.refresh(), preserveScroll: true, preserveState: false});
+            this.refresh()
+        },
+        refresh(){
             this.onbetaald['1'] = 0;
             this.onbetaald['2'] = 0;
             this.onbetaald['3'] = 0;
@@ -148,10 +170,6 @@ export default({
             this.betaald['13'] = 0;
             this.betaald['14'] = 0;
             this.betaald['15'] = 0;
-
-
-
-
             this.orders.forEach(order => {
                 this.orderlines.forEach(orderline => {
                     if (order.payed_at == null && orderline.order_id == order.id){
@@ -160,30 +178,55 @@ export default({
                     else if (orderline.order_id == order.id){
                         this.betaald[orderline['article_id']]++;
                     }
-                });
-            });
-            return count;
-        }
-    },
-    methods: {
-        orderTotal(orderId){
-            var total = 0;
-            this.articles.forEach(article => {
-                this.orderlines.forEach(orderline => {
-                    if(orderline.order_id == orderId && orderline.article_id == article.id){
-                        total += orderline.quantity*article.sell_price;
-                    }
-                });
-            });
-            return total;
-        },
 
-        setPayed(orderId, action){
-            this.$inertia.post('/payed', {'orderId':orderId, 'action':action}, {onSucces: console.log('succes'), preserveScroll: true, only: ['orders']});
+                });
+            });
         }
 
     },
+    mounted() {
+        this.onbetaald['1'] = 0;
+        this.onbetaald['2'] = 0;
+        this.onbetaald['3'] = 0;
+        this.onbetaald['4'] = 0;
+        this.onbetaald['5'] = 0;
+        this.onbetaald['6'] = 0;
+        this.onbetaald['7'] = 0;
+        this.onbetaald['8'] = 0;
+        this.onbetaald['9'] = 0;
+        this.onbetaald['10'] = 0;
+        this.onbetaald['11'] = 0;
+        this.onbetaald['12'] = 0;
+        this.onbetaald['13'] = 0;
+        this.onbetaald['14'] = 0;
+        this.onbetaald['15'] = 0;
 
+        this.betaald['1'] = 0;
+        this.betaald['2'] = 0;
+        this.betaald['3'] = 0;
+        this.betaald['4'] = 0;
+        this.betaald['5'] = 0;
+        this.betaald['6'] = 0;
+        this.betaald['7'] = 0;
+        this.betaald['8'] = 0;
+        this.betaald['9'] = 0;
+        this.betaald['10'] = 0;
+        this.betaald['11'] = 0;
+        this.betaald['12'] = 0;
+        this.betaald['13'] = 0;
+        this.betaald['14'] = 0;
+        this.betaald['15'] = 0;
+        this.orders.forEach(order => {
+            this.orderlines.forEach(orderline => {
+                if (order.payed_at == null && orderline.order_id == order.id){
+                    this.onbetaald[orderline['article_id']]+= orderline['quantity'];
+                }
+                else if (orderline.order_id == order.id){
+                    this.betaald[orderline['article_id']]++;
+                }
 
+            });
+        });
+    }
 })
 </script>

@@ -20,7 +20,7 @@ class BeheersController extends Controller
 
         } */
         return Inertia::render('Beheer', [
-            'orders' => $orders,
+            'orders' => Order::all(),
             'articles' => Article::all(),
             'orderlines' => Orderline::all(),
 

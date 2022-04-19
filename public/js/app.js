@@ -22998,8 +22998,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     resItems: function resItems() {
-      var _this = this;
-
       var count = 0;
       /* this.orderlines.forEach(orderline => {
           this.orders.forEach(order => {
@@ -23011,6 +23009,37 @@ __webpack_require__.r(__webpack_exports__);
               }
           });
       }); */
+
+      return count;
+    }
+  },
+  methods: {
+    orderTotal: function orderTotal(orderId) {
+      var _this = this;
+
+      var total = 0;
+      this.articles.forEach(function (article) {
+        _this.orderlines.forEach(function (orderline) {
+          if (orderline.order_id == orderId && orderline.article_id == article.id) {
+            total += orderline.quantity * article.sell_price;
+          }
+        });
+      });
+      return total;
+    },
+    setPayed: function setPayed(orderId, action) {
+      this.$inertia.post('/payed', {
+        'orderId': orderId,
+        'action': action
+      }, {
+        onSucces: this.refresh(),
+        preserveScroll: true,
+        preserveState: false
+      });
+      this.refresh();
+    },
+    refresh: function refresh() {
+      var _this2 = this;
 
       this.onbetaald['1'] = 0;
       this.onbetaald['2'] = 0;
@@ -23043,43 +23072,59 @@ __webpack_require__.r(__webpack_exports__);
       this.betaald['14'] = 0;
       this.betaald['15'] = 0;
       this.orders.forEach(function (order) {
-        _this.orderlines.forEach(function (orderline) {
-          if (order.payed_at == null && orderline.order_id == order.id) {
-            _this.onbetaald[orderline['article_id']] += orderline['quantity'];
-          } else if (orderline.order_id == order.id) {
-            _this.betaald[orderline['article_id']]++;
-          }
-        });
-      });
-      return count;
-    }
-  },
-  methods: {
-    orderTotal: function orderTotal(orderId) {
-      var _this2 = this;
-
-      var total = 0;
-      this.articles.forEach(function (article) {
         _this2.orderlines.forEach(function (orderline) {
-          if (orderline.order_id == orderId && orderline.article_id == article.id) {
-            total += orderline.quantity * article.sell_price;
+          if (order.payed_at == null && orderline.order_id == order.id) {
+            _this2.onbetaald[orderline['article_id']] += orderline['quantity'];
+          } else if (orderline.order_id == order.id) {
+            _this2.betaald[orderline['article_id']]++;
           }
         });
       });
-      return total;
-    },
-    setPayed: function setPayed(orderId, action) {
-      this.$inertia.post('/payed', {
-        'orderId': orderId,
-        'action': action
-      }, {
-        onSucces: console.log('succes'),
-        preserveScroll: true,
-        only: ['orders']
-      });
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var _this3 = this;
+
+    this.onbetaald['1'] = 0;
+    this.onbetaald['2'] = 0;
+    this.onbetaald['3'] = 0;
+    this.onbetaald['4'] = 0;
+    this.onbetaald['5'] = 0;
+    this.onbetaald['6'] = 0;
+    this.onbetaald['7'] = 0;
+    this.onbetaald['8'] = 0;
+    this.onbetaald['9'] = 0;
+    this.onbetaald['10'] = 0;
+    this.onbetaald['11'] = 0;
+    this.onbetaald['12'] = 0;
+    this.onbetaald['13'] = 0;
+    this.onbetaald['14'] = 0;
+    this.onbetaald['15'] = 0;
+    this.betaald['1'] = 0;
+    this.betaald['2'] = 0;
+    this.betaald['3'] = 0;
+    this.betaald['4'] = 0;
+    this.betaald['5'] = 0;
+    this.betaald['6'] = 0;
+    this.betaald['7'] = 0;
+    this.betaald['8'] = 0;
+    this.betaald['9'] = 0;
+    this.betaald['10'] = 0;
+    this.betaald['11'] = 0;
+    this.betaald['12'] = 0;
+    this.betaald['13'] = 0;
+    this.betaald['14'] = 0;
+    this.betaald['15'] = 0;
+    this.orders.forEach(function (order) {
+      _this3.orderlines.forEach(function (orderline) {
+        if (order.payed_at == null && orderline.order_id == order.id) {
+          _this3.onbetaald[orderline['article_id']] += orderline['quantity'];
+        } else if (orderline.order_id == order.id) {
+          _this3.betaald[orderline['article_id']]++;
+        }
+      });
+    });
+  }
 });
 
 /***/ }),
