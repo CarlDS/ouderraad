@@ -810,6 +810,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 5rem;
 }.ml-24{
   margin-left: 6rem;
+}.mr-8{
+  margin-right: 2rem;
 }.block{
   display: block;
 }.inline{
@@ -928,6 +930,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }.grid-cols-5{
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }.flex-row{
   flex-direction: row;
 }.flex-col{
@@ -1489,6 +1493,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.active\:drop-shadow-2xl:active{
   --tw-drop-shadow: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}.disabled\:text-blue-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }.disabled\:opacity-25:disabled{
   opacity: 0.25;
 }@media (prefers-color-scheme: dark){.dark\:border-gray-700{

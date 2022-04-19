@@ -42,7 +42,7 @@
                         <div class="col-span-7">
                             <div v-for="orderline in orderlines" :key="orderline">
                                 <div v-if="orderline.order_id == order.id" class="ml-24 border-l-2 border-gray-100 px-4">
-                                    {{displayLineName(orderline.article_id)}}   x {{orderline.quantity}}
+                                    <span class="mr-8">x {{orderline.quantity}}</span><span>{{displayLineName(orderline.article_id)}} </span>
                                 </div>
                             </div>
                         </div>
