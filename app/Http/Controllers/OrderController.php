@@ -120,7 +120,7 @@ class OrderController extends Controller
         $message = '<h1>Bevestiging van je bestelling</h1>';
         $message.= '<p>Beste '.$order->fname.', </p>';
         $message .= '<p> Wij dank je van harte voor jouw bestelling. Deze bevestiging werd ook verstuurd naar '.$order->email.' Kijk zeker je spam-folder na wanneer je de mail niet onmiddelijk terugvindt. </p>';
-        $message .= '<p>Om je reservatie definitief te bevestigen vragen we om een bedrag van <strong> '.$amount.' € </strong> over te schrijven op rekening van de school <strong>BE26 7343 5616 6629</strong>. Als mededeling geef je <strong>'.$order->reference.'</strong>. Zo kunnen wij jouw bestelling vlot verwerken.</p><p>Je bestelling kan je ophalen op 29 april, tussen 15u en 18u in ';
+        $message .= '<p>Om je reservatie definitief te bevestigen vragen we om een bedrag van <strong> '.$amount.' Euro </strong> over te schrijven op rekening van de school <strong>BE26 7343 5616 6629</strong>. Als mededeling geef je <strong>'.$order->reference.'</strong>. Zo kunnen wij jouw bestelling vlot verwerken.</p><p>Je bestelling kan je ophalen op 29 april, tussen 15u en 18u in ';
         if ($order->location == 'LS'){
             $message .= 'de lagere school, Mechelsevest 2.<br>';
         }
@@ -132,7 +132,7 @@ class OrderController extends Controller
         $message .= '<p>Hieronder vind je jouw bestelling nogmaals opgelijst: </p>';
         $message .= '<table class="w-full">';
         foreach ($order->orderlines as $orderline){
-            $message .= '<tr><td>'.$orderline->article->name.'</td><td>'.$orderline->quantity.'</td><td>'.$orderline->article->sell_price.'</td><td>'.$orderline->quantity*$orderline->article->sell_price.'</td></tr>';
+            $message .= '<tr><td>'.$orderline->article->name.'</td><td> x'.$orderline->quantity.'</td><td> ='.$orderline->quantity*$orderline->article->sell_price.' Euro</td><td> ('.$orderline->article->sell_price.' Euro/st)</td></tr>';
         }
         $message .= '</table>';
 
@@ -153,11 +153,11 @@ class OrderController extends Controller
 
     public function mailconfirm($order, $amount, $reference, $request){
 
-        $message = '<h1>Bevestiging van je bestelling</h1><p>Beste '.$order->fname.', </p><p> Wij dank je van harte voor jouw bestelling. Deze bevestiging werd ook verstuurd naar '.$order->email.' Kijk zeker je spam-folder na wanneer je de mail niet onmiddelijk terugvindt. </p><p>Om je reservatie definitief te bevestigen vragen we om een bedrag van <strong> '.$amount.' € </strong> over te schrijven op rekening van de school <strong>BE26 7343 5616 6629</strong>. Als mededeling geef je <strong>'.$reference.'</strong>. Zo kunnen wij jouw bestelling vlot verwerken.</p><p>Je bestelling kan je ophalen op 29 april, tussen 15u en 18u in de lagere school, Mechelsevest 2.<br> Denk eraan om op de dag van afhaling koeltassen mee te brengen!</p><p>Hieronder vind je jouw bestelling nogmaals opgelijst: </p>';
+        $message = '<h1>Bevestiging van je bestelling</h1><p>Beste '.$order->fname.', </p><p> Wij dank je van harte voor jouw bestelling. Deze bevestiging werd ook verstuurd naar '.$order->email.' Kijk zeker je spam-folder na wanneer je de mail niet onmiddelijk terugvindt. </p><p>Om je reservatie definitief te bevestigen vragen we om een bedrag van <strong> '.$amount.' Euro </strong> over te schrijven op rekening van de school <strong>BE26 7343 5616 6629</strong>. Als mededeling geef je <strong>'.$reference.'</strong>. Zo kunnen wij jouw bestelling vlot verwerken.</p><p>Je bestelling kan je ophalen op 29 april, tussen 15u en 18u in de lagere school, Mechelsevest 2.<br> Denk eraan om op de dag van afhaling koeltassen mee te brengen!</p><p>Hieronder vind je jouw bestelling nogmaals opgelijst: </p>';
         $message .= '<table class="w-full">';
         foreach ($request->products as $product){
             //dd($product['name']);
-            $message .= '<tr><td>'.$product['name'].'</td><td>'.$product['quantity'].'</td><td>'.$product['price'].'</td><td>'.$product['quantity']*$product['price'].'</td></tr>';
+            $message .= '<tr><td>'.$product['name'].'</td><td>'.$product['quantity'].'</td><td> x'.$product['price'].'euro</td><td> '.$product['quantity']*$product['price'].'</td></tr>';
         }
         $message .= '</table>';
 
