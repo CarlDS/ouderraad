@@ -39,6 +39,13 @@
                             <button v-if="!order.payed_at" @click="setPayed(order.id,'pay')" class="text-green-500 text-xs border-2 border-green-500 rounded-lg px-1">Betaling Registreren</button>
                             <button v-if="order.payed_at" @click="setPayed(order.id,'cancel')" class="text-red-500 text-xs border-2 border-red-500 rounded-lg px-1">Betaling Annuleren</button>
                         </div>
+                        <div class="col-span-7">
+                            <div v-for="orderline in orderlines" :key="orderline">
+                                <div v-if="orderline.order_id == order.id" class="ml-24 border-l-2 border-gray-100 px-4">
+                                    {{displayLineName(orderline.article_id)}}   x {{orderline.quantity}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,6 +188,15 @@ export default({
 
                 });
             });
+        },
+        displayLineName(articleId){
+            var el= '';
+            this.articles.forEach(element => {
+                if(element.id == articleId){
+                    el = element.name
+                }
+            });
+            return el;
         }
 
     },

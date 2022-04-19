@@ -725,6 +725,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 40;
 }.col-span-6{
   grid-column: span 6 / span 6;
+}.col-span-7{
+  grid-column: span 7 / span 7;
 }.m-2{
   margin: 0.5rem;
 }.mx-auto{
@@ -804,6 +806,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.25rem;
 }.ml-5{
   margin-left: 1.25rem;
+}.ml-20{
+  margin-left: 5rem;
+}.ml-24{
+  margin-left: 6rem;
 }.block{
   display: block;
 }.inline{
@@ -1000,6 +1006,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-bottom-width: 1px;
 }.border-r{
   border-right-width: 1px;
+}.border-l-2{
+  border-left-width: 2px;
 }.border-gray-300{
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
