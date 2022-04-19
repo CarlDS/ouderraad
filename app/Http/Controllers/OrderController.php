@@ -119,7 +119,7 @@ class OrderController extends Controller
     public function confirmMail($order, $amount){
         $message = '<h1>Bevestiging van je bestelling</h1>';
         $message.= '<p>Beste '.$order->fname.', </p>';
-        $message .= '<p> Wij dank je van harte voor jouw bestelling. Deze bevestiging werd ook verstuurd naar '.$order->email.' Kijk zeker je spam-folder na wanneer je de mail niet onmiddelijk terugvindt. </p>';
+        $message .= '<p> Wij danken je van harte voor jouw bestelling. Deze bevestiging werd ook verstuurd naar '.$order->email.' Kijk zeker je spam-folder na wanneer je de mail niet onmiddelijk terugvindt. </p>';
         $message .= '<p>Om je reservatie definitief te bevestigen vragen we om een bedrag van <strong> '.$amount.' Euro </strong> over te schrijven op rekening van de school <strong>BE26 7343 5616 6629</strong>. Als mededeling geef je <strong>'.$order->reference.'</strong>. Zo kunnen wij jouw bestelling vlot verwerken.</p><p>Je bestelling kan je ophalen op 29 april, tussen 15u en 18u in ';
         if ($order->location == 'LS'){
             $message .= 'de lagere school, Mechelsevest 2.<br>';
