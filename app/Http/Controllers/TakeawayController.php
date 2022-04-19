@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Order;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,20 @@ class TakeawayController extends Controller
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
+        ]);
+    }
+    public function beheer(){
+        $orders = Order::all();
+        foreach ($orders as $order){
+            $order->orderlines;
+            foreach($order->orderlines as $orderline){
+                $orderline->article;
+            }
+
+        }
+        return Inertia::render('TakeAwayNew/Dashboard', [
+            'orders' => $orders,
+
         ]);
     }
 
@@ -43,5 +58,15 @@ class TakeawayController extends Controller
             'email' => ['required']
         ]);
         dd($request);
+    }
+
+    public function newversion(){
+        return Inertia::render('TakeAwayNew/TakeAwayNew', [
+            'articles' => Article::all(),
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
     }
 }

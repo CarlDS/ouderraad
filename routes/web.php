@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AssortimentController;
+use App\Http\Controllers\BeheersController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TakeawayController;
@@ -19,15 +20,20 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('/ordernew', [OrderController::class, 'storenew'])->name('ordernew');
 Route::post('/order', [OrderController::class, 'store'])->name('order');
-Route::get('/', [TakeawayController::class, 'landing']);
+Route::post('/payed', [BeheersController::class, 'pay'])->name('pay');
 
-Route::get('/take-away', [TakeawayController::class, 'show']
-)->name('takeaway');
+Route::get('/', [TakeawayController::class, 'show']);
+
+
+Route::get('/take-away', [TakeawayController::class, 'newversion'])->name('takeaway');
+Route::get('/take-awayold', [TakeawayController::class, 'show']
+)->name('takeawayold');
 Route::get('/TAKE-AWAY', [TakeawayController::class, 'landing']
 );
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/take-away/beheer', [BeheersController::class, 'beheer'])->name('beheer');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');

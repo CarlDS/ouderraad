@@ -41,9 +41,13 @@
                     <option value="L6">6de leerjaar</option>
                     <option value="MW">Medewerker</option>
                 </select>
-
                 <jet-input-error :message="form.errors.contact_grade" class="mt-2" />
             </div>
+            <div class="col-span-6 sm:col-span-4">
+                    Ik haal mijn bestelling op 29 april (15u-18u) op in:<br>
+                    <input type="radio" id="ridderstraat" name="location" value="ridderstraat"><label for="ridderstraat">Kleuterschool, Ridderstraat</label>
+                <br><input type="radio" id="mechelsevest" name="location" value="mechelsevest"><label for="mechelsevest">Lagere school, Mechelsevest</label>
+                </div>
             <hr>
             <table class="w-full">
             <tr v-for="product in products" :key="product">

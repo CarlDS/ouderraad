@@ -1,13 +1,12 @@
 <template>
-  <form @submit.prevent="submit">
-    <label for="first_name">First name:</label>
-    <input id="first_name" v-model="form.first_name" />
-    <label for="last_name">Last name:</label>
-    <input id="last_name" v-model="form.last_name" />
-    <label for="email">Email:</label>
-    <input id="email" v-model="form.email" />
-    <button type="submit">Submit</button>
-  </form>
+    <nav class="w-full px-3 flex justify-between bg-sjblue">
+        <img src="images/rups_trans.png" class="h-20">
+        <h1>Take Aways Sint-Jansschool Leuven</h1>
+        <p>test</p>
+    </nav>
+
+    <div class="grid-cols-1 md:grid-cols-2">
+    </div>
 </template>
 
 <script>
