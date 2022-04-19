@@ -52,7 +52,7 @@ import SintjanLayout from '@/Layouts/SintjanLayout.vue'
 
 export default({
     setup() {
-
+        this.resItems;
     },
     components: {
         SintjanLayout,
@@ -183,9 +183,7 @@ export default({
         }
 
     },
-    mounted() {
-        setTimeout(this.resItems, 10);
 
-    }
+
 })
 </script>
