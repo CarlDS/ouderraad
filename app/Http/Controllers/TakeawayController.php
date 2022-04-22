@@ -71,4 +71,8 @@ class TakeawayController extends Controller
             'phpVersion' => PHP_VERSION,
         ]);
     }
+
+    public function outorder(){
+        echo 'Take Away closed';
+    }
 }

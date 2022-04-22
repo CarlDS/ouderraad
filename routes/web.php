@@ -20,18 +20,18 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/* Route::post('/ordernew', [OrderController::class, 'storenew'])->name('ordernew');
-Route::post('/order', [OrderController::class, 'store'])->name('order'); */
+Route::post('/ordernew', [OrderController::class, 'storenew'])->name('ordernew');
+Route::post('/order', [OrderController::class, 'store'])->name('order');
 Route::post('/payed', [BeheersController::class, 'pay'])->name('pay');
 
-/* Route::get('/', [TakeawayController::class, 'show']); */
+Route::get('/', [TakeawayController::class, 'outorder']);
 
 
-/* Route::get('/take-away', [TakeawayController::class, 'newversion'])->name('takeaway'); */
-/* Route::get('/take-awayold', [TakeawayController::class, 'show']
+Route::get('/take-away', [TakeawayController::class, 'newversion'])->name('outorder');
+Route::get('/take-awayold', [TakeawayController::class, 'outorder']
 )->name('takeawayold');
-Route::get('/TAKE-AWAY', [TakeawayController::class, 'landing']
-); */
+Route::get('/TAKE-AWAY', [TakeawayController::class, 'outorder']
+);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/take-away/beheer', [BeheersController::class, 'beheer'])->name('beheer');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
