@@ -19,7 +19,7 @@
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route.current()" :active="route().current('takeaway')">
+                                <jet-nav-link :href="route.current()" :active="route().current('home')">
                                     Take Away
                                 </jet-nav-link>
 
@@ -51,7 +51,7 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route.current()" :active="route().current('takeaway')">
+                        <jet-responsive-nav-link :href="route.current()" :active="route().current('home')">
                             Take Away
                         </jet-responsive-nav-link>
                     </div>
