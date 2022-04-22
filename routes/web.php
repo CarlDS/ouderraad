@@ -27,7 +27,7 @@ Route::post('/payed', [BeheersController::class, 'pay'])->name('pay');
 Route::get('/', [TakeawayController::class, 'outorder']);
 
 
-Route::get('/take-away', [TakeawayController::class, 'newversion'])->name('outorder');
+Route::get('/take-away', [TakeawayController::class, 'outorder'])->name('takeaway');
 Route::get('/take-awayold', [TakeawayController::class, 'outorder']
 )->name('takeawayold');
 Route::get('/TAKE-AWAY', [TakeawayController::class, 'outorder']
