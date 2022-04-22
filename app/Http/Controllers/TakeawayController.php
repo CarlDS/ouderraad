@@ -61,6 +61,8 @@ class TakeawayController extends Controller
     }
 
     public function newversion(){
+
+        dd('actie werd afgesloten)');
         return Inertia::render('TakeAwayNew/TakeAwayNew', [
             'articles' => Article::all(),
             'canLogin' => Route::has('login'),
